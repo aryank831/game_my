@@ -1,68 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Developer Groups on Campus DR.AITD</title>
-    <link rel="stylesheet" href="linktree.css">
-    <!-- Disable Right Click and View Source -->
-    <script>
-        document.addEventListener("contextmenu", function(e) {
-            e.preventDefault();
-        });
-        document.onkeydown = function(e) {
-            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) || (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
-                return false;
-            }
-        };
-    </script>
+  <meta charset="UTF-8" />
+  <title>Flying Game with Losing Sound</title>
+  <style>
+    body {
+      margin: 0;
+      background: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+    #gameContainer { 
+      position: relative; 
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    canvas {
+      background: linear-gradient(#87ceeb, #4ec0ca);
+      border: 3px solid #fff;
+      border-radius: 12px;
+      display: block;
+    }
+    #score {
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px #000;
+      pointer-events: none;
+      z-index: 10;
+    }
+    #message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      text-align: center;
+      text-shadow: 2px 2px 4px #000;
+      background-color: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 10px;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <img src="https://res.cloudinary.com/startup-grind/image/fetch/c_scale,w_2560/c_crop,h_650,w_2560,y_0.0_mul_h_sub_0.0_mul_650/c_crop,h_650,w_2560/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/https://res.cloudinary.com/startup-grind/image/upload/c_fill%2Cdpr_2.0%2Cf_auto%2Cg_center%2Cq_auto:good/v1/gcs/platform-data-goog/chapter_banners/Screenshot%2520%2528469%2529_wyOxGKJ.png" alt="Profile Image" class="profile-img animate-fade-in">
-            <h1 class="title animate-slide-in">Google Developer Groups on Campus Dr.AITD</h1>
-            <h2 class="title animate-slide-in">LEARN | CONNECT | GROW</h2>
-        </header>
 
-        <div class="link-list animate-bounce-in">
-            <a href="https://gdg.community.dev/gdg-on-campus-dr-ambedkar-institute-of-technology-for-handicapped-kanpur-india/" class="link-item">
-                <img src="https://ugc.production.linktr.ee/dl0dMCm2TnyWBLCk4KBN_vnGhPDd193hl12AT?io=true&size=avatar-v3_0" alt="GDSC Icon">
-                <span>GDG - AITD</span>
-            </a>
-            <a href="https://gdg.community.dev/events/details/google-gdg-on-campus-dr-ambedkar-institute-of-technology-for-handicapped-kanpur-india-presents-gdg-info-session-your-path-to-tech-success/" class="link-item">
-                <img src="https://th.bing.com/th?id=ODLS.019faf6f-ab0e-42a2-a7ec-83cea8b916cb&w=32&h=32&qlt=95&pcl=fffffa&o=6&pid=1.2" alt="Icon">
-                <span>Info Session</span>
-            </a>
-            <a href="https://gdg.community.dev/events/details/google-gdg-on-campus-dr-ambedkar-institute-of-technology-for-handicapped-kanpur-india-presents-open-source-made-easy-how-to-contribute-with-gssoc/cohost-gdg-on-campus-dr-ambedkar-institute-of-technology-for-handicapped-kanpur-india" class="link-item">
-                <img src="https://th.bing.com/th?id=ODLS.b2344597-0e26-45d6-bbc1-592fe8049812&w=32&h=32&qlt=98&pcl=fffffa&o=6&pid=1.2" alt="Discord Icon">
-                <span>Open Source Made Easy</span>
-            </a>
-            <a href="https://gdg.community.dev/events/details/google-gdg-on-campus-dr-ambedkar-institute-of-technology-for-handicapped-kanpur-india-presents-build-with-ai/" class="link-item">
-                <img src="https://th.bing.com/th?id=ODLS.6322929e-2133-493d-8aa7-380e4e8f4531&w=32&h=32&qlt=96&pcl=fffffa&o=6&pid=1.2" alt="Instagram Icon">
-                <span>Build with AI</span>
-            </a>
-            <a href="https://in.linkedin.com/company/gdsc-dr-aith" class="link-item">
-                <img src="https://th.bing.com/th?id=ODLS.fc619bab-a786-4b75-8669-6881202d98da&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2" alt="LinkedIn Icon">
-                <span>LinkedIn</span>
-            </a>
-            <a href="https://www.instagram.com/gdg_aitd/profilecard/?igsh=MWdzOGl6MzMybWh4dg==" class="link-item">
-                <img src="https://th.bing.com/th?id=ODLS.673e3827-800e-44f1-8900-24dfdabec7e3&w=18&h=18&o=6&pid=1.2" alt="YouTube Icon">
-                <span>Instagram</span>
-            </a>
-            <a href="https://www.twitter.com/Gdsc_DrAith" class="link-item">
-              <img src="https://th.bing.com/th?id=ODLS.4dcff697-993c-4ff3-be0c-84f964afc3a9&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2" alt="YouTube Icon">
-              <span>Twitter</span>
-          </a>
-          <a href=" mailto: akhilsrivastava801@gmail.com" class="link-item" onclick="handleClick('')" target="_blank">
-              <img src="https://th.bing.com/th?id=ODLS.112e55dc-4008-476c-bb39-88b4f8adb808&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2" alt="YouTube Icon">
-              <span>Gmail</span>
-          </a>
-        
-          <footer>
-            <p id="foot">Follow us on social media!</p>
-          </footer>
-        </div>
-    </div>
+  <div id="gameContainer">
+    <canvas id="gameCanvas" width="400" height="600"></canvas>
+    <div id="score">0</div>
+    <div id="message">Press SPACE or CLICK to Start</div>
+  </div>
+
+<script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+const scoreEl = document.getElementById("score");
+const messageEl = document.getElementById("message");
+
+// === 1. IMAGES ===
+const playerImage = new Image();
+playerImage.src = "image.png";
+let playerLoaded = false;
+playerImage.onload = () => { playerLoaded = true; };
+
+// === 2. AUDIO (Using Internet Links) ===
+
+// Background Music
+const bgMusic = new Audio('mo.mp3'); 
+bgMusic.loop = true; 
+bgMusic.volume = 0.4;
+
+// Jump Sound
+const jumpSound = new Audio('jump.mp3');    
+jumpSound.volume = 0.0;
+
+// --- NEW: Losing Sound ---
+const overSound = new Audio('ending.mp3');
+overSound.volume = 0.5;
+
+// Game Variables
+const player = { 
+    x: 50, 
+    y: 300, 
+    width: 50, 
+    height: 40, 
+    vel: 0, 
+    gravity: 0.5, 
+    jump: -8 
+};
+
+let pipes = [];
+let frame = 0;
+let score = 0;
+let started = false;
+let over = false;
+
+function reset() {
+  player.y = 300;
+  player.vel = 0;
+  pipes = [];
+  frame = 0;
+  score = 0;
+  over = false;
+  scoreEl.textContent = "0";
+  messageEl.textContent = "Press SPACE or CLICK to Start";
+  messageEl.style.display = "block";
+  
+  // Stop sounds on reset
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
+  overSound.pause();
+  overSound.currentTime = 0;
+}
+
+function createPipe() {
+  const gap = 160;
+  const minTop = 50;
+  const maxTop = canvas.height - minTop - gap;
+  const topHeight = Math.floor(Math.random() * (maxTop - minTop + 1) + minTop);
+  
+  pipes.push({ 
+      x: canvas.width, 
+      top: topHeight, 
+      bottom: topHeight + gap, 
+      width: 60,
+      counted: false 
+  });
+}
+
+function update() {
+  if (!started || over) return;
+
+  frame++;
+  player.vel += player.gravity;
+  player.y += player.vel;
+
+  if (frame % 100 === 0) createPipe();
+
+  pipes.forEach(p => p.x -= 3);
+  pipes = pipes.filter(p => p.x + p.width > 0);
+
+  pipes.forEach(p => {
+    // Collision
+    if (player.x < p.x + p.width && player.x + player.width > p.x) {
+        if (player.y < p.top || player.y + player.height > p.bottom) {
+            gameOver();
+        }
+    }
+    // Scoring
+    if (!p.counted && p.x + p.width < player.x) {
+      score++;
+      p.counted = true;
+      scoreEl.textContent = score;
+    }
+  });
+
+  if (player.y + player.height >= canvas.height || player.y < 0) {
+    gameOver();
+  }
+}
+
+function gameOver() {
+    if(over) return; // Prevent playing sound multiple times if hitting multiple things
+    over = true;
+    messageEl.innerHTML = "Game Over!<br>Score: " + score + "<br><small>Click to Restart</small>";
+    messageEl.style.display = "block";
+    
+    // Stop Background Music
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
+    
+    // Play Losing Sound
+    overSound.currentTime = 0;
+    overSound.play();
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Pipes
+  ctx.fillStyle = "#2ecc71";
+  ctx.strokeStyle = "#27ae60";
+  ctx.lineWidth = 2;
+  pipes.forEach(p => {
+    ctx.fillRect(p.x, 0, p.width, p.top);
+    ctx.strokeRect(p.x, 0, p.width, p.top);
+    ctx.fillRect(p.x, p.bottom, p.width, canvas.height - p.bottom);
+    ctx.strokeRect(p.x, p.bottom, p.width, canvas.height - p.bottom);
+  });
+
+  // Player
+  if (playerLoaded) {
+    ctx.drawImage(playerImage, player.x, player.y, player.width, player.height);
+  } else {
+    ctx.fillStyle = "orange";
+    ctx.fillRect(player.x, player.y, player.width, player.height);
+  }
+}
+
+function loop() {
+  update();
+  draw();
+  requestAnimationFrame(loop);
+}
+
+function jump() {
+  if (!started) {
+    started = true;
+    messageEl.style.display = "none";
+    bgMusic.play().catch(e => console.log("Music waiting for interaction"));
+  }
+  if (over) {
+    reset();
+    started = true;
+    messageEl.style.display = "none";
+    bgMusic.play();
+  }
+  
+  if (!over) {
+      player.vel = player.jump;
+      jumpSound.currentTime = 0;
+      jumpSound.play();
+  }
+}
+
+// Controls
+document.addEventListener("keydown", e => {
+  if (e.code === "Space") jump();
+});
+canvas.addEventListener("mousedown", jump);
+canvas.addEventListener("touchstart", e => { e.preventDefault(); jump(); });
+
+reset();
+loop();
+</script>
 </body>
 </html>
